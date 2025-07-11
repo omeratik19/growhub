@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Growhub - Profil</title>
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body>
+    <div id="profile-navbar">
+      <a href="dashboard.html" class="logo"
+        ><span class="logo-icon">🌱</span> Growhub</a
+      >
+      <button id="logout">Çıkış Yap</button>
+    </div>
+    <div id="profile-container">
+      <div id="profile-header">
+        <img id="profile-avatar" src="" alt="avatar" />
+        <div id="profile-info">
+          <h2 id="profile-username">Kullanıcı Adı</h2>
+          <div id="profile-bio">Bio buraya gelecek...</div>
+          <div id="profile-stats">
+            <span id="profile-followers">0 Takipçi</span> ·
+            <span id="profile-following">0 Takip</span>
+          </div>
+          <button id="edit-profile" style="display: none">
+            Profili Düzenle
+          </button>
+          <button id="follow-btn" style="display: none">Takip Et</button>
+        </div>
+      </div>
+      <div id="profile-tabs">
+        <button class="tab active" data-tab="projects">Projeler</button>
+        <button class="tab" data-tab="posts">Gönderiler</button>
+      </div>
+      <div id="profile-content">
+        <div class="loader">İçerik yükleniyor...</div>
+      </div>
+    </div>
+    <script src="js/profile.js"></script>
+  </body>
+</html>

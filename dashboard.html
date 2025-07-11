@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Growhub - Ana Sayfa</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <div class="logo">
+        <span class="logo-icon">🌱</span> <span class="logo-text">Growhub</span>
+      </div>
+      <input
+        type="text"
+        class="search"
+        placeholder="Kullanıcı, proje veya teknoloji ara..."
+      />
+      <div class="nav-actions">
+        <button id="add-project-btn" class="btn-purple">+ Proje Ekle</button>
+        <button id="profile-btn">Profilim</button>
+        <button id="logout">Çıkış Yap</button>
+      </div>
+    </div>
+    <div id="main-content">
+      <aside id="sidebar">
+        <h3>Kategoriler</h3>
+        <ul>
+          <li class="active"><span>🏠</span> Tümü</li>
+          <li><span>🌐</span> Web Geliştirme</li>
+          <li><span>📱</span> Mobil</li>
+          <li><span>🤖</span> Yapay Zeka</li>
+          <li><span>🎨</span> Tasarım</li>
+          <li><span>🎮</span> Oyun</li>
+          <li><span>⋯</span> Diğer</li>
+        </ul>
+      </aside>
+      <section id="feed">
+        <div class="feed-header">
+          <h2>Son Paylaşımlar</h2>
+          <div class="tabs">
+            <button class="tab active" data-tab="all">Tümü</button>
+            <button class="tab" data-tab="projects">Projeler</button>
+            <button class="tab" data-tab="posts">Gönderiler</button>
+          </div>
+        </div>
+        <div id="feed-content">
+          <div class="loader">İçerik yükleniyor...</div>
+        </div>
+      </section>
+      <aside id="rightbar">
+        <div class="trend-box">
+          <h3>Trend Projeler</h3>
+          <div id="trend-projects"></div>
+        </div>
+        <div class="suggest-box">
+          <h3>Önerilen Kullanıcılar</h3>
+          <div id="suggested-users"></div>
+        </div>
+      </aside>
+    </div>
+    <!-- Proje Ekle Modalı -->
+    <div id="project-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span class="close-modal" id="close-project-modal">&times;</span>
+        <h2>Yeni Proje Ekle</h2>
+        <form id="project-form">
+          <div class="form-group">
+            <label>Proje Başlığı</label>
+            <input type="text" id="project-title" required />
+          </div>
+          <div class="form-group">
+            <label>Açıklama</label>
+            <textarea id="project-desc" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <select id="project-category" required>
+              <option>Web Uygulaması</option>
+              <option>Mobil Uygulama</option>
+              <option>Yapay Zeka</option>
+              <option>Oyun</option>
+              <option>Tasarım</option>
+              <option>Veri Bilimi</option>
+              <option>Diğer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Kullanılan Teknolojiler</label>
+            <input
+              type="text"
+              id="project-techs"
+              placeholder="HTML, CSS, JS"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Demo URL</label>
+            <input
+              type="url"
+              id="project-demo"
+              placeholder="https://demo.example.com"
+            />
+          </div>
+          <div class="form-group">
+            <label>GitHub URL</label>
+            <input
+              type="url"
+              id="project-github"
+              placeholder="https://github.com/kullanici/proje"
+            />
+          </div>
+          <div class="form-group">
+            <label>Proje Görseli Yükle</label>
+            <input type="file" id="project-image-file" accept="image/*" />
+            <img
+              id="project-image-preview"
+              src=""
+              alt="Görsel Önizleme"
+              style="
+                display: none;
+                max-width: 100%;
+                margin-top: 8px;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px #a259ff22;
+              "
+            />
+          </div>
+          <button type="submit" class="btn-purple modal-submit">
+            Projeyi Yayınla
+          </button>
+          <div id="project-form-result"></div>
+        </form>
+      </div>
+    </div>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

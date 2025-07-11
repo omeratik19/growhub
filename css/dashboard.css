@@ -1,0 +1,410 @@
+body {
+  background: #f8f8ff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  color: #222;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(162, 89, 255, 0.07);
+  padding: 0 40px;
+  height: 68px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #a259ff;
+  letter-spacing: 1px;
+}
+.logo-icon {
+  font-size: 2.1rem;
+  margin-right: 8px;
+}
+.logo-text {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  color: #7f1fff;
+}
+.search {
+  width: 340px;
+  padding: 10px 16px;
+  border-radius: 24px;
+  border: 1.5px solid #e0e0e0;
+  font-size: 15px;
+  background: #fafaff;
+  transition: border 0.2s;
+}
+.search:focus {
+  border: 1.5px solid #a259ff;
+  outline: none;
+}
+.nav-actions {
+  display: flex;
+  gap: 16px;
+}
+.nav-actions button {
+  background: linear-gradient(90deg, #a259ff 0%, #7f1fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(162, 89, 255, 0.08);
+  transition: background 0.2s, transform 0.2s;
+  margin-left: 8px;
+}
+.nav-actions button:hover {
+  background: linear-gradient(90deg, #7f1fff 0%, #a259ff 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+#main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  margin: 36px 0 0 0;
+}
+#sidebar {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(162, 89, 255, 0.06);
+  padding: 28px 24px 18px 24px;
+  min-width: 210px;
+  max-width: 220px;
+}
+#sidebar h3 {
+  margin-top: 0;
+  color: #7f1fff;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#sidebar li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #444;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: background 0.18s, color 0.18s;
+}
+#sidebar li.active,
+#sidebar li:hover {
+  background: #a259ff22;
+  color: #7f1fff;
+}
+
+#feed {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(162, 89, 255, 0.06);
+  padding: 28px 32px 24px 32px;
+  min-width: 420px;
+  max-width: 600px;
+  flex: 1 1 600px;
+}
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.feed-header h2 {
+  color: #222;
+  font-size: 22px;
+  margin: 0;
+}
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+.tab {
+  background: #f3eaff;
+  color: #7f1fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.tab.active,
+.tab:hover {
+  background: linear-gradient(90deg, #a259ff 0%, #7f1fff 100%);
+  color: #fff;
+}
+#feed-content {
+  min-height: 180px;
+}
+.loader {
+  text-align: center;
+  color: #a259ff;
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+#rightbar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 220px;
+  max-width: 260px;
+}
+.trend-box,
+.suggest-box {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(162, 89, 255, 0.06);
+  padding: 22px 20px 18px 20px;
+}
+.trend-box h3,
+.suggest-box h3 {
+  color: #7f1fff;
+  font-size: 17px;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 1100px) {
+  #main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  #sidebar,
+  #rightbar {
+    min-width: 90vw;
+    max-width: 98vw;
+    margin-bottom: 18px;
+  }
+  #feed {
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 700px) {
+  #navbar {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding: 12px 8px;
+  }
+  .search {
+    width: 98vw;
+    max-width: 98vw;
+  }
+}
+
+/* Paylaşım kutusu */
+#share-box {
+  background: #fafaff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(162, 89, 255, 0.06);
+  padding: 22px 24px 16px 24px;
+  margin-bottom: 28px;
+}
+.share-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.share-tab {
+  background: #f3eaff;
+  color: #7f1fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.share-tab.active,
+.share-tab:hover {
+  background: linear-gradient(90deg, #a259ff 0%, #7f1fff 100%);
+  color: #fff;
+}
+#share-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 0;
+}
+#share-box input[type="text"],
+#share-box textarea {
+  padding: 10px;
+  border: 1.2px solid #dbdbdb;
+  border-radius: 7px;
+  font-size: 15px;
+  background: #fff;
+  transition: border 0.2s;
+}
+#share-box input:focus,
+#share-box textarea:focus {
+  border: 1.5px solid #a259ff;
+  outline: none;
+  background: #fafaff;
+}
+#share-box button[type="submit"] {
+  background: linear-gradient(90deg, #a259ff 0%, #7f1fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+#share-box button[type="submit"]:hover {
+  background: linear-gradient(90deg, #7f1fff 0%, #a259ff 100%);
+}
+#share-result {
+  margin-top: 8px;
+  min-height: 18px;
+  font-size: 15px;
+  color: #e74c3c;
+  text-align: center;
+}
+
+/* Modal ve Proje Ekle Formu Modern Tasarım */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: rgba(127, 31, 255, 0.18);
+  backdrop-filter: blur(2.5px);
+  transition: background 0.2s;
+}
+.modal-content {
+  background: #fff;
+  margin: 60px auto;
+  border-radius: 22px;
+  padding: 38px 36px 30px 36px;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(127, 31, 255, 0.18),
+    0 2px 8px rgba(162, 89, 255, 0.1);
+  position: relative;
+  animation: modalIn 0.18s cubic-bezier(0.4, 2, 0.6, 1) both;
+}
+.modal-content h2 {
+  font-size: 2rem;
+  color: #7f1fff;
+  font-weight: 700;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.close-modal {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 2.1rem;
+  color: #a259ff;
+  cursor: pointer;
+  font-weight: bold;
+  background: none;
+  border: none;
+  z-index: 10;
+  transition: color 0.18s, transform 0.18s;
+}
+.close-modal:hover {
+  color: #7f1fff;
+  transform: scale(1.18) rotate(8deg);
+}
+#project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#project-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+#project-form label {
+  font-size: 15px;
+  color: #7f1fff;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+#project-form input[type="text"],
+#project-form input[type="url"],
+#project-form textarea,
+#project-form select {
+  padding: 11px;
+  border: 1.5px solid #dbdbdb;
+  border-radius: 9px;
+  font-size: 15px;
+  background: #fafaff;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(127, 31, 255, 0.06);
+}
+#project-form input:focus,
+#project-form textarea:focus,
+#project-form select:focus {
+  border: 1.7px solid #a259ff;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(127, 31, 255, 0.1);
+}
+.modal-submit {
+  background: linear-gradient(90deg, #a259ff 0%, #7f1fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(127, 31, 255, 0.1);
+  transition: background 0.2s, transform 0.15s;
+}
+.modal-submit:hover {
+  background: linear-gradient(90deg, #7f1fff 0%, #a259ff 100%);
+  transform: scale(1.03);
+}
+#project-form-result {
+  margin-top: 10px;
+  min-height: 18px;
+  font-size: 15px;
+  color: #e74c3c;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 98vw;
+    padding: 18px 4vw 18px 4vw;
+  }
+  #project-form {
+    gap: 10px;
+  }
+}
