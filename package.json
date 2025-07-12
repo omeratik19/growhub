@@ -1,0 +1,25 @@
+{
+  "name": "growhub",
+  "version": "1.0.0",
+  "description": "Modern developer portfolio and project sharing platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.5.0"
+  },
+  "keywords": [
+    "portfolio",
+    "projects",
+    "developers",
+    "sharing"
+  ],
+  "author": "Growhub Team",
+  "license": "MIT"
+}
