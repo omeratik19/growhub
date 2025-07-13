@@ -1,7 +1,8 @@
 // Supabase Configuration
-const SUPABASE_URL = process.env.SUPABASE_URL || "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY =
-  process.env.SUPABASE_ANON_KEY || "YOUR_SUPABASE_ANON_KEY";
+// Bu dosyayı Supabase projenizden aldığınız bilgilerle güncelleyin
+const SUPABASE_URL =
+  process.env.SUPABASE_URL || "https://your-project-id.supabase.co";
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "your-anon-key-here";
 
 // Supabase client configuration
 const supabaseConfig = {

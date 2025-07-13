@@ -2,8 +2,9 @@
 import { createClient } from "https://cdn.skypack.dev/@supabase/supabase-js";
 
 // Supabase configuration
-const supabaseUrl = "YOUR_SUPABASE_URL";
-const supabaseAnonKey = "YOUR_SUPABASE_ANON_KEY";
+// Bu bilgileri Supabase projenizden alın
+const supabaseUrl = "https://your-project-id.supabase.co";
+const supabaseAnonKey = "your-anon-key-here";
 
 // Create Supabase client
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
