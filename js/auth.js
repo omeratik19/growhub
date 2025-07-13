@@ -1,3 +1,6 @@
+// Supabase client ve auth fonksiyonlarını içe aktar
+const { auth } = window.GrowhubSupabase;
+
 // Kayıt formu işlemleri
 const registerForm = document.getElementById("register-form");
 registerForm.addEventListener("submit", async function (e) {
@@ -6,27 +9,14 @@ registerForm.addEventListener("submit", async function (e) {
   const email = document.getElementById("register-email").value;
   const password = document.getElementById("register-password").value;
 
-  const response = await fetch("api/auth.php?action=register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, email, password }),
-  });
-  const result = await response.json();
-  document.getElementById("register-result").innerText =
-    result.success || result.error;
-  if (result.success) {
-    // Kayıt başarılıysa otomatik giriş yap
-    const loginResponse = await fetch("api/auth.php?action=login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ usernameOrEmail: email, password }),
-    });
-    const loginResult = await loginResponse.json();
-    if (loginResult.success) {
-      localStorage.setItem("growhub_user", JSON.stringify(loginResult.user));
-      window.location.href = "dashboard.html";
-    }
+  const { data, error } = await auth.signUp(email, password, username);
+  const resultDiv = document.getElementById("register-result");
+  if (error) {
+    resultDiv.innerText = error.message;
+    return;
   }
+  resultDiv.innerText = "Kayıt başarılı! Lütfen e-postanı kontrol et.";
+  // Kayıttan sonra otomatik giriş yapılmaz, kullanıcı e-posta doğrulaması yapmalı
 });
 
 // Giriş formu işlemleri
@@ -38,18 +28,15 @@ loginForm.addEventListener("submit", async function (e) {
   ).value;
   const password = document.getElementById("login-password").value;
 
-  const response = await fetch("api/auth.php?action=login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ usernameOrEmail, password }),
-  });
-  const result = await response.json();
-  if (result.success) {
-    // Kullanıcı bilgilerini localStorage'a kaydet
-    localStorage.setItem("growhub_user", JSON.stringify(result.user));
-    // Ana sayfaya yönlendir
-    window.location.href = "dashboard.html";
-  } else {
-    document.getElementById("login-result").innerText = result.error;
+  // Sadece e-posta ile giriş destekleniyor
+  const { data, error } = await auth.signIn(usernameOrEmail, password);
+  const resultDiv = document.getElementById("login-result");
+  if (error) {
+    resultDiv.innerText = error.message;
+    return;
   }
+  // Kullanıcı bilgilerini localStorage'a kaydet (isteğe bağlı)
+  localStorage.setItem("growhub_user", JSON.stringify(data.user));
+  // Ana sayfaya yönlendir
+  window.location.href = "dashboard.html";
 });
